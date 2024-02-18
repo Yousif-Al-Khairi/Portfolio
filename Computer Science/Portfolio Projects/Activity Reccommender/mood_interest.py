@@ -14,5 +14,12 @@ mood_interest_choices = {
     'm': 'Sports and fitness',
     'n': 'Food and cooking',
     'o': 'Cultural experiences',
-    'p': 'Educational pursuits'
+    'p': 'Educational pursuits',
+    'q': 'Nature exploration', 
+    'r': 'Entertainment', 
+    's': 'Relaxation and self-care', 
+    't': 'Adventure sports', 
+    'u': 'Volunteer work', 
+    'v': 'DIY projects', 
+    'w': 'Gaming and recreation'
 }
