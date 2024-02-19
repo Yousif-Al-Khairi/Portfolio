@@ -26,21 +26,32 @@ class Graph:
             self.graph_dict[to_vertex.value].add_edge(from_vertex.value, weight)
     def return_nodes(self):
         return list(self.graph_dict.keys())
-    def search(self, interest_list):
-        checked = {}
+    def search(self, interest_list, lim):
+        check_dict = {}
+        check_list = []
         RList = []
         first_key = next(iter(self.graph_dict))  # Get the first key
         start_vertex = self.graph_dict[first_key]
-        for mood_interest in start_vertex.get_edges():
-            if mood_interest in interest_list:
-                pass
+        for mood_interest_key  in start_vertex.get_edges():
+            mood_interest = self.graph_dict[mood_interest_key]
+            if mood_interest.value in interest_list:
+                for activity in mood_interest.get_edges(): 
+                    check_list.append(activity)
 
-        return RList
+        for activity_key in check_list[1:]:
+            activity = self.graph_dict[activity_key]
+            int_count = 0
+            for edge in activity.get_edges():
+                if edge in interest_list:
+                    int_count += 1
+            check_dict[activity.value] = int_count
+        
+        return check_dict
     
 
 
 #create the graph
-activity_graph = Graph(directed=True)  
+activity_graph = Graph(directed = False)  
 starting_vert = Vertex("Start")
 activity_graph.add_vertex(starting_vert)
 mood_interest_vertices = {}
@@ -69,7 +80,7 @@ for mood_interest, activities in activity_categories.items():
 
 
 
-print(activity_graph.return_nodes())
+#print(activity_graph.return_nodes())
 """ 
 print("Mood/Interest Vertices:")
 for vertex in mood_interest_vertices.values():
@@ -97,4 +108,4 @@ pos = nx.spring_layout(G)
 
 nx.draw(G, with_labels=True, node_size=200, font_size=5)  # Adjust node size and font size as needed
 plt.show()
-#print(starting_vert.get_edges()) """
+# """

@@ -1,4 +1,8 @@
 from mood_interest import mood_interest_choices
+from graph_creation import Vertex
+from graph_creation import Graph
+from graph_creation import activity_graph
+
 #from graph_creation import *
 
 choice_str = '\n'.join([f"{key}: {value}" for key, value in mood_interest_choices.items()])
@@ -44,6 +48,8 @@ def pref_sub():
             else:
                 print(f"'{mood_interest_choices[choice]}' is already in your interest/mood list")
                 pref_sub()
+        else:
+            pref_sub()
     else: 
         print(f"Great, your preferences have been set, your interests and moods have been given to us as the following:")
         for interest in interest_list:
@@ -66,7 +72,7 @@ def set_preferences():
     global list_lim
     if interest_list == None:
         interest_list = []
-    if len(interest_list) == 23:
+    if len(interest_list) == len(list(mood_interest_choices.keys())):
         print("We've completely filled your list! All we can do now is let you change how large you want your list of suggestions to be.")
         pref_sub_2()
         return
@@ -82,7 +88,8 @@ def find_activities():
     if interest_list == None or list_lim == None: 
         print("Please set your preferences before trying to generate a list!")
         return
-    print("not done yet, testing main func.")
+    list = activity_graph.search(interest_list, list_lim)
+    print(list)
 
 
 def get_user_res():
