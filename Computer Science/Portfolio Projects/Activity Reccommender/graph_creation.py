@@ -1,6 +1,7 @@
 from activity_data import activity_categories
 import networkx as nx
 import matplotlib.pyplot as plt
+import random
 class Vertex: 
     def __init__(self,value):
         self.value = value
@@ -45,8 +46,19 @@ class Graph:
                 if edge in interest_list:
                     int_count += 1
             check_dict[activity.value] = int_count
-        
-        return check_dict
+        sorted_items = sorted(check_dict.items(), key= lambda item: item[1], reverse=True)
+        # Extract keys from sorted items into a list
+        sorted_keys = [item[0] for item in sorted_items if item[0] != "Start"]
+        if len(sorted_keys) > lim:
+            final_keys = sorted_keys[:lim]
+            if len(set(check_dict.values())) < lim:
+                last_value = check_dict[final_keys[-1]]
+                tie_keys = [key for key, value in check_dict.items() if value == last_value and key not in final_keys]
+                num_to_fill = lim - len(final_keys)
+                final_keys.extend(random.sample(tie_keys, num_to_fill))
+        else:
+            final_keys = sorted_keys
+        return final_keys, len(check_dict)
     
 
 
@@ -80,8 +92,8 @@ for mood_interest, activities in activity_categories.items():
 
 
 
-#print(activity_graph.return_nodes())
-""" 
+""" #print(activity_graph.return_nodes())
+
 print("Mood/Interest Vertices:")
 for vertex in mood_interest_vertices.values():
     print(vertex.value, vertex.get_edges())

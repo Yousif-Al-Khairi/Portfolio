@@ -88,8 +88,12 @@ def find_activities():
     if interest_list == None or list_lim == None: 
         print("Please set your preferences before trying to generate a list!")
         return
-    list = activity_graph.search(interest_list, list_lim)
-    print(list)
+    list, length = activity_graph.search(interest_list, list_lim)
+    print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+    print("Based on your preferences regarding your interests and mood we think that the following activities would interest you: ")
+    for activity in list:
+        print(activity)
+    print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 
 
 def get_user_res():

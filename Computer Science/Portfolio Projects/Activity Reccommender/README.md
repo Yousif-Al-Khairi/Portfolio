@@ -10,4 +10,5 @@ TODO:
 
 3. implement a modified graph search algorithm that finds the node which has the most paths to the start containing the input list of moods and interests 
     Notes: i might not have to use a formalised graph search algorithm either. Since the graph is at most 3 layers wide from the start to any kind of activity, and we max have 100 activities, it is acceptable for our current use case to just dump all of our associated activities into a list and then iterate through it and for every edge it has to an interest thats in our interest list, we give it a certain priority number, and at the end we just populate the return list using that priority 
+
 4. host this on a local web server using flask
