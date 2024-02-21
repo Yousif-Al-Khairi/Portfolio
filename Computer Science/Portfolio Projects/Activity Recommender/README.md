@@ -1,6 +1,6 @@
 This is an activity recommender application. 
 
-it is meant to continously ask the user questions about their mood, and what their interests are, and once it does this it should reccommend them different activities to do. 
+it is meant to continously ask the user questions about their mood, and what their interests are, and once it does this it should recommend them different activities to do. 
 
 TODO: 
 1. use AI (GPT4) to generate a large database of different activities and their associated moods and what kind of person would be interested in them. 
