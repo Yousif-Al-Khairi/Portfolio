@@ -30,7 +30,6 @@ class Graph:
     def search(self, interest_list, lim):
         check_dict = {}
         check_list = []
-        RList = []
         first_key = next(iter(self.graph_dict))  # Get the first key
         start_vertex = self.graph_dict[first_key]
         for mood_interest_key  in start_vertex.get_edges():
