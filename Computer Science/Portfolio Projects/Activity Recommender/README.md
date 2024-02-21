@@ -1,4 +1,4 @@
-This is an activity reccommender application. 
+This is an activity recommender application. 
 
 it is meant to continously ask the user questions about their mood, and what their interests are, and once it does this it should reccommend them different activities to do. 
 
