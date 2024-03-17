@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 # Load the data
-transactions = pd.read_csv('transactions.csv')
+transactions = pd.read_csv('Data Science\Regular Projects\Supervised-Learning-RCT\Predict_Credit_Card_Fraud\mod_transactions.csv')
 #print(transactions.head())
 #print(transactions.info())
 
